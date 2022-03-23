@@ -1,6 +1,4 @@
 import '../../abstractions/http/a_http_client.dart';
-import '../../abstractions/http/a_options.dart';
-import '../../abstractions/http/a_response.dart';
 
 class HttpClient implements AHttpClient{
   @override

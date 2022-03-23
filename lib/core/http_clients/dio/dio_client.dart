@@ -3,8 +3,6 @@ import 'package:dio/dio.dart';
 import 'package:untitled1/core/error/unknown_failure.dart';
 
 import '../../abstractions/http/a_http_client.dart';
-import '../../abstractions/http/a_options.dart';
-import '../../abstractions/http/a_response.dart';
 
 class DioClient implements AHttpClient{
   final Dio _dio;
