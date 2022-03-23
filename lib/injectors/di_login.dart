@@ -1,8 +1,9 @@
 import 'package:get_it/get_it.dart';
 
+import '../features/login/data/data_sources/i_login_remote_data_source.dart';
 import '../features/login/data/data_sources/login_remote_data_source.dart';
 import '../features/login/data/repositories/login_repository_impl.dart';
-import '../features/login/domain/repositories/login_repository.dart';
+import '../features/login/domain/repositories/i_login_repository.dart';
 import '../features/login/domain/use_cases/login_use_case.dart';
 import '../features/login/presentation/bloc/login_bloc.dart';
 class DILogin {
@@ -21,23 +22,23 @@ class DILogin {
     //********* Use Cases **********
     getIt.registerLazySingleton(() {
       return LoginUseCase(
-        loginRepository: getIt(),
+        getIt(),
       );
     });
 
     //*********************************
     //********* Repositories **********
-    getIt.registerLazySingleton<LoginRepository>(() {
-      return LoginRepositoryImpl(
-        tokenDataSource: getIt(),
-        loginRemoteDataSource: getIt(),
+    getIt.registerLazySingleton<ILoginRepository>(() {
+      return LoginRepository(
+        getIt(),
+        getIt(),
       );
     });
 
     //*********************************
     //********* Data Sources **********
-    getIt.registerLazySingleton<LoginRemoteDataSource>(() {
-      return LoginRemoteDataSourceImpl(
+    getIt.registerLazySingleton<ILoginRemoteDataSource>(() {
+      return LoginRemoteDataSource(
         dio: getIt(),
       );
     });

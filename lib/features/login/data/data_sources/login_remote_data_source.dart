@@ -1,15 +1,13 @@
 import 'package:dio/dio.dart';
 import '../../../../config/env/app_enviroment.dart';
 import '../../../../core/token/data/models/token_model.dart';
+import 'i_login_remote_data_source.dart';
 
-abstract class LoginRemoteDataSource{
-  Future<TokenModel?> issueNewAccessToken({required TokenModel oldToken});
-  Future<TokenModel> login({required String username, required String password,});
-}
 
-class LoginRemoteDataSourceImpl implements LoginRemoteDataSource{
+
+class LoginRemoteDataSource implements ILoginRemoteDataSource{
   final Dio _dio;
-  LoginRemoteDataSourceImpl({required Dio dio}) : _dio = dio;
+  LoginRemoteDataSource({required Dio dio}) : _dio = dio;
 
   @override
   Future<TokenModel?> issueNewAccessToken({required TokenModel oldToken}) async {
@@ -44,14 +42,11 @@ class LoginRemoteDataSourceImpl implements LoginRemoteDataSource{
   }
 
   @override
-  Future<TokenModel> login({required String username, required String password}) async {
+  Future<TokenModel> login({required Map<String, dynamic> data,}) async {
     try{
       final response = await _dio.post(
         '$baseUrl/identity/token',
-        data: {
-          'email': username,
-          'password': password,
-        },
+        data: data,
       );
       if(response.statusCode == 200){
         return TokenModel.fromJson(response.data['data']);

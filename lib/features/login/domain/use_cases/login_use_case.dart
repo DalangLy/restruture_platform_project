@@ -1,10 +1,10 @@
-import '../repositories/login_repository.dart';
+import '../repositories/i_login_repository.dart';
 
 class LoginUseCase{
-  final LoginRepository _loginRepository;
-  LoginUseCase({required LoginRepository loginRepository,}) : _loginRepository = loginRepository;
+  final ILoginRepository _loginRepository;
+  LoginUseCase(this._loginRepository,);
 
-  Future<bool> call({required String username, required String password,}){
-    return _loginRepository.login(username: username, password: password,);
+  Future<bool> call({required Map<String, dynamic> data,}){
+    return _loginRepository.login(data: data,);
   }
 }
