@@ -24,9 +24,9 @@ class LoginRemoteDataSource implements ILoginRemoteDataSource{
           //print('1count is : $count total is : $total');
         },
         options: Options(
-            sendTimeout: 2000,
-            receiveTimeout: 3000,
-            method: 'POST'
+          sendTimeout: 2000,
+          receiveTimeout: 3000,
+          method: 'POST'
         ),
       );
       if(response.statusCode == 200){
