@@ -78,28 +78,28 @@ class _LoginThemeSwitcherState extends State<LoginThemeSwitcher> {
         switch (index) {
           case 0:
             BlocProvider.of<ThemeSwitcherBloc>(context).add(
-              ChangeTheme(
+              const ChangeTheme(
                 themeMode: ThemeMode.system,
               ),
             );
             break;
           case 1:
             BlocProvider.of<ThemeSwitcherBloc>(context).add(
-              ChangeTheme(
+              const ChangeTheme(
                 themeMode: ThemeMode.dark,
               ),
             );
             break;
           case 2:
             BlocProvider.of<ThemeSwitcherBloc>(context).add(
-              ChangeTheme(
+              const ChangeTheme(
                 themeMode: ThemeMode.light,
               ),
             );
             break;
           default:
             BlocProvider.of<ThemeSwitcherBloc>(context).add(
-              ChangeTheme(
+              const ChangeTheme(
                 themeMode: ThemeMode.system,
               ),
             );

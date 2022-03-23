@@ -26,28 +26,16 @@ class UserModel extends User{
     return UserModel.fromJson(json.decode(jsonString));
   }
 
-  String toRawJson(){
-    return json.encode(toJson());
-  }
-
   factory UserModel.fromJson(Map<String, dynamic> json){
     return UserModel(
-      id: json['id'].toString(),
-      firstName: json['firstName'].toString(),
-      lastName: json['lastName'],
-      email: json['email'].toString(),
-      isActive: json['isActive'],
-      emailConfirmed: json['emailConfirmed'],
-      phoneNumber: json['phoneNumber'],
-      username: json['userName'],
+      id: json['id'] as String,
+      firstName: json['firstName'] as String,
+      lastName: json['lastName'] as String,
+      email: json['email'] as String,
+      isActive: json['isActive'] as bool,
+      emailConfirmed: json['emailConfirmed'] as bool,
+      phoneNumber: json['phoneNumber'] as String,
+      username: json['userName'] as String,
     );
-  }
-
-  Map<String, dynamic> toJson(){
-    return {
-      'id': id,
-      'name': firstName,
-      'email': email,
-    };
   }
 }

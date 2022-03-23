@@ -19,7 +19,7 @@ class LoginForeground extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20.0),
-            color: Color.fromRGBO(200, 200, 200, 0.5),
+            color: const Color.fromRGBO(200, 200, 200, 0.5),
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
