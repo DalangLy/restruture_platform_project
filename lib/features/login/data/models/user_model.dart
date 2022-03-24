@@ -1,26 +1,24 @@
 import 'dart:convert';
 import '../../domain/entities/user.dart';
 
-class UserModel extends User{
-  const UserModel({
-    required String id,
-    required String firstName,
-    required String lastName,
-    required String email,
-    required bool isActive,
-    required bool emailConfirmed,
-    required String phoneNumber,
-    required String username,
-  }) : super(
-    id: id,
-    firstName: firstName,
-    lastName: lastName,
-    email: email,
-    isActive: isActive,
-    emailConfirmed: emailConfirmed,
-    phoneNumber: phoneNumber,
-    username: username,
-  );
+class UserModel extends User {
+  const UserModel(
+    String id,
+    String name,
+    String email,
+    DateTime emailVerifiedAt,
+    String username,
+    DateTime createdAt,
+    DateTime updatedAt,
+  ) : super(
+          id,
+          name,
+          email,
+          emailVerifiedAt,
+          username,
+          createdAt,
+          updatedAt,
+        );
 
   factory UserModel.fromRawJson({ required String jsonString }){
     return UserModel.fromJson(json.decode(jsonString));
@@ -28,14 +26,13 @@ class UserModel extends User{
 
   factory UserModel.fromJson(Map<String, dynamic> json){
     return UserModel(
-      id: json['id'] as String,
-      firstName: json['firstName'] as String,
-      lastName: json['lastName'] as String,
-      email: json['email'] as String,
-      isActive: json['isActive'] as bool,
-      emailConfirmed: json['emailConfirmed'] as bool,
-      phoneNumber: json['phoneNumber'] as String,
-      username: json['userName'] as String,
+      json['id'] as String,
+      json['name'] as String,
+      json['email'] as String,
+      DateTime.parse(json['email_verified_at'] as String),
+      json['username'] as String,
+      DateTime.parse(json['created_at'] as String),
+      DateTime.parse(json['updated_at'] as String),
     );
   }
 }

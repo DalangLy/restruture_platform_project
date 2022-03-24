@@ -45,11 +45,12 @@ class LoginRemoteDataSource implements ILoginRemoteDataSource{
   Future<TokenModel> login({required Map<String, dynamic> data,}) async {
     try{
       final response = await _dio.post(
-        '$baseUrl/identity/token',
+        '$baseUrl/oauth/token',
         data: data,
       );
       if(response.statusCode == 200){
-        return TokenModel.fromJson(response.data['data']);
+        print(response.data);
+        return TokenModel.fromJson(response.data);
       }
       throw Exception();
     }catch(e){

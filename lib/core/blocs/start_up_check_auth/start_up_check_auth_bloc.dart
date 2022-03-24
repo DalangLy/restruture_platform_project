@@ -15,7 +15,7 @@ class StartUpCheckAuthBloc extends Bloc<StartUpCheckAuthEvent, StartUpCheckAuthS
       if(event is CheckAuth){
         emit(const CheckAuthInProgress());
         final TokenModel f = await _tokenDataSource.checkTokenInStorage();
-        if(f.token.isNotEmpty){
+        if(f.accessToken.isNotEmpty){
           emit(const CheckAuthSuccess(),);
         }
         else{

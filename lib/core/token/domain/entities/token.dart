@@ -1,20 +1,18 @@
 import 'package:equatable/equatable.dart';
 
 class Token extends Equatable {
-  final String token;
+  final String tokenType;
+  final DateTime expiresIn;
+  final String accessToken;
   final String refreshToken;
-  final DateTime refreshTokenExpiryTime;
 
-  const Token({
-    required this.token,
-    required this.refreshToken,
-    required this.refreshTokenExpiryTime,
-  });
+  const Token(
+    this.tokenType,
+    this.expiresIn,
+    this.accessToken,
+    this.refreshToken,
+  );
 
   @override
-  List<Object?> get props => [
-    token,
-    refreshToken,
-    refreshTokenExpiryTime,
-  ];
+  List<Object?> get props => [];
 }
