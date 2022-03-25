@@ -23,8 +23,6 @@ class RootMaterialApp extends StatefulWidget {
 class _RootMaterialAppState extends State<RootMaterialApp> {
   final AppRouter _appRouter = AppRouter();
 
-  late bool _isLoaded = false;
-
   late ThemeMode _themeMode = ThemeMode.system;
 
   void _changeTheme({
@@ -127,24 +125,31 @@ class _RootMaterialAppState extends State<RootMaterialApp> {
                 const HomeWrapperRoute()
               // if they are not logged in, bring them to the Login page
               else
+                const RegisterRoute(),
                 const LoginRoute(),
             ],
           ),
           routeInformationParser: _appRouter.defaultRouteParser(),
           builder: (BuildContext context, Widget? child) {
-            if (_isLoaded) {
-              return child!;
-            }
-            return StartUpLoadingPage(
-              loadingCallback: (isLoaded) {
-                setState(() {
-                  _isLoaded = isLoaded;
-                });
-              },
-            );
+            return _startUp(context, child);
           },
         ),
       ),
+    );
+  }
+
+  //show loading on start up
+  late bool _isLoaded = false;
+  Widget _startUp(BuildContext? context, Widget? child,){
+    if (_isLoaded) {
+      return child!;
+    }
+    return StartUpLoadingPage(
+      loadingCallback: (isLoaded) {
+        setState(() {
+          _isLoaded = isLoaded;
+        });
+      },
     );
   }
 }
