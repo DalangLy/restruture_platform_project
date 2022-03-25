@@ -16,7 +16,7 @@ class NoTokenFound extends Failure{
 
 class TokenDataSourceImpl implements TokenDataSource {
   final TokenStorage _tokenStorage;
-  static const String _authKey = 'login';
+  static const String _authKey = 'auth';
   TokenDataSourceImpl({
     required TokenStorage tokenStorage,
   }) : _tokenStorage = tokenStorage;

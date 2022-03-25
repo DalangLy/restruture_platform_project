@@ -9,7 +9,7 @@ import 'core/blocs/logout/logout_bloc.dart';
 import 'core/blocs/network_checker/network_checker_bloc.dart';
 import 'core/blocs/start_up_check_auth/start_up_check_auth_bloc.dart';
 import 'core/blocs/theme_switcher/theme_switcher_bloc.dart';
-import 'features/login/presentation/bloc/login_bloc.dart';
+import 'features/auth/presentation/bloc/login_bloc.dart';
 import 'features/start_up_loading/presentation/pages/start_up_loading_page.dart';
 import 'injectors/injector.dart';
 
@@ -125,7 +125,6 @@ class _RootMaterialAppState extends State<RootMaterialApp> {
                 const HomeWrapperRoute()
               // if they are not logged in, bring them to the Login page
               else
-                const RegisterRoute(),
                 const LoginRoute(),
             ],
           ),

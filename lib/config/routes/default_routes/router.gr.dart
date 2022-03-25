@@ -13,13 +13,12 @@
 import 'package:auto_route/auto_route.dart' as _i5;
 import 'package:flutter/material.dart' as _i6;
 
+import '../../../features/auth/presentation/pages/login_page.dart' as _i1;
+import '../../../features/auth/presentation/pages/register_page.dart' as _i2;
 import '../../../features/dashboard/presentation/pages/dashboard_page.dart'
     as _i4;
 import '../../../features/home/presentation/pages/home_wrapper_page.dart'
     as _i3;
-import '../../../features/login/presentation/pages/login_page.dart' as _i1;
-import '../../../features/register/presentation/pages/register_page.dart'
-    as _i2;
 
 class AppRouter extends _i5.RootStackRouter {
   AppRouter([_i6.GlobalKey<_i6.NavigatorState>? navigatorKey])
@@ -51,7 +50,7 @@ class AppRouter extends _i5.RootStackRouter {
 
   @override
   List<_i5.RouteConfig> get routes => [
-        _i5.RouteConfig(LoginRoute.name, path: '/login'),
+        _i5.RouteConfig(LoginRoute.name, path: '/auth'),
         _i5.RouteConfig(RegisterRoute.name, path: '/register'),
         _i5.RouteConfig(HomeWrapperRoute.name, path: '/', children: [
           _i5.RouteConfig(DashboardRoute.name,
@@ -63,7 +62,7 @@ class AppRouter extends _i5.RootStackRouter {
 /// generated route for
 /// [_i1.LoginPage]
 class LoginRoute extends _i5.PageRouteInfo<void> {
-  const LoginRoute() : super(LoginRoute.name, path: '/login');
+  const LoginRoute() : super(LoginRoute.name, path: '/auth');
 
   static const String name = 'LoginRoute';
 }
